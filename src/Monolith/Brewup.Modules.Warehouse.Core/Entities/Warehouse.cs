@@ -24,6 +24,7 @@ public class Warehouse : AggregateRoot
 
 	private Warehouse(WarehouseId warehouseId, WarehouseName warehouseName)
 	{
+		// .. controllo invarianti
 		RaiseEvent(new WarehouseCreated(warehouseId, warehouseName));
 	}
 

@@ -1,11 +1,8 @@
 ﻿using Brewup.Modules.Sales.Abstracts;
 using Brewup.Modules.Sales.Concretes;
 using Brewup.Modules.Sales.EventsHandler;
-using Brewup.Modules.Sales.Sagas;
 using Brewup.Modules.Sales.Shared.DomainEvents;
 using Brewup.Modules.Sales.Validators;
-using Brewup.Modules.Shared.DomainEvents;
-using Brewup.Modules.Shared.IntegrationEvents;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,9 +20,9 @@ public static class SalesHelper
 		services.AddScoped<ISalesOrderService, SalesOrderService>();
 		services.AddScoped<ISalesOrchestrator, SalesOrchestrator>();
 
-		services.AddScoped<IDomainEventHandlerAsync<BeersAvailabilityAsked>, SalesOrderSaga>();
-		services.AddScoped<IIntegrationEventHandlerAsync<BroadcastBeerWithdrawn>, SalesOrderSaga>();
-		services.AddScoped<IDomainEventHandlerAsync<SalesOrderCreated>, SalesOrderSaga>();
+		//services.AddScoped<IDomainEventHandlerAsync<BeersAvailabilityAsked>, SalesOrderSaga>();
+		//services.AddScoped<IIntegrationEventHandlerAsync<BroadcastBeerWithdrawn>, SalesOrderSaga>();
+		//services.AddScoped<IDomainEventHandlerAsync<SalesOrderCreated>, SalesOrderSaga>();
 		services.AddScoped<IDomainEventHandlerAsync<SalesOrderCreated>, SalesOrderCreatedEventHandler>();
 
 		return services;

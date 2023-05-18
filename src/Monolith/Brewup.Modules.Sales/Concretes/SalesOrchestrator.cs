@@ -1,5 +1,5 @@
-﻿using Brewup.Modules.Sales.Abstracts;
-using Brewup.Modules.Sales.Sagas;
+﻿using Brewup.Modules.Sagas;
+using Brewup.Modules.Sales.Abstracts;
 using Brewup.Modules.Sales.Shared.Commands;
 using Brewup.Modules.Sales.Shared.Dtos;
 using Brewup.Modules.Shared.CustomTypes;

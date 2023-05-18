@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <Folder Include="EventsHandler\" />
+      <Folder Include="Sagas\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -20,6 +21,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Brewup.Infrastructure.ReadModel\Brewup.Infrastructure.ReadModel.csproj" />
+      <ProjectReference Include="..\Brewup.Modules.Sagas\Brewup.Modules.Sagas.csproj" />
       <ProjectReference Include="..\Brewup.Modules.Sales.Shared\Brewup.Modules.Sales.Shared.csproj" />
       <ProjectReference Include="..\Brewup.Shared\Brewup.Shared.csproj" />
     </ItemGroup>

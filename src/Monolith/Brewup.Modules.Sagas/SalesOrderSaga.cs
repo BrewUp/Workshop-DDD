@@ -12,11 +12,11 @@ using Muflone.Persistence;
 using Muflone.Saga;
 using Muflone.Saga.Persistence;
 
-namespace Brewup.Modules.Sales.Sagas;
+namespace Brewup.Modules.Sagas;
 
 public class SalesOrderSaga : Saga<SalesSagaState>,
 	ISagaStartedByAsync<LaunchSalesOrderSaga>,
-	IDomainEventHandlerAsync<BeersAvailabilityAsked>,
+	ISagaEventHandlerAsync<BeersAvailabilityAsked>,
 	IIntegrationEventHandlerAsync<BroadcastBeerWithdrawn>,
 	IDomainEventHandlerAsync<SalesOrderCreated>
 {
@@ -64,7 +64,7 @@ public class SalesOrderSaga : Saga<SalesSagaState>,
 		await ServiceBus.SendAsync(askForBeersAvailability, CancellationToken.None);
 	}
 
-	public async Task HandleAsync(BeersAvailabilityAsked @event, CancellationToken cancellationToken = new())
+	public async Task HandleAsync(BeersAvailabilityAsked @event)
 	{
 		var correlationId = new Guid(@event.UserProperties.FirstOrDefault(u => u.Key.Equals("CorrelationId")).Value.ToString()!);
 		var sagaState = await Repository.GetByIdAsync<SalesSagaState>(correlationId);
@@ -72,6 +72,14 @@ public class SalesOrderSaga : Saga<SalesSagaState>,
 		if (sagaState is null)
 			return;
 
+		sagaState.StoreAvailabilityChecked = true;
+		await Repository.SaveAsync(sagaState.SagaId, sagaState);
+
+		foreach (var availability in @event.Availabilities)
+		{
+			if (availability.Availability.Value > 0)
+				continue;
+		}
 		// Verify availability
 		// With availability we create order
 		// Without availability we send a message to the customer

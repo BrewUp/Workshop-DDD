@@ -30,6 +30,7 @@
 	  <ProjectReference Include="..\Brewup.Infrastructure.Muflone\Brewup.Infrastructure.Muflone.csproj" />
 	  <ProjectReference Include="..\Brewup.Infrastructure.ReadModel.MongoDb\Brewup.Infrastructure.ReadModel.MongoDb.csproj" />
 	  <ProjectReference Include="..\Brewup.Modules.Production\Brewup.Modules.Production.csproj" />
+	  <ProjectReference Include="..\Brewup.Modules.Sagas\Brewup.Modules.Sagas.csproj" />
 	  <ProjectReference Include="..\Brewup.Modules.Sales\Brewup.Modules.Sales.csproj" />
 	  <ProjectReference Include="..\Brewup.Modules.Warehouse\Brewup.Modules.Warehouse.csproj" />
 	</ItemGroup>

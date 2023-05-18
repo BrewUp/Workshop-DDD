@@ -1,6 +1,6 @@
 ﻿using Brewup.Modules.Sales.Shared.Dtos;
 
-namespace Brewup.Modules.Sales.Sagas;
+namespace Brewup.Modules.Sagas;
 
 public class SalesSagaState
 {

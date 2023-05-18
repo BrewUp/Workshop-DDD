@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+    <PackageReference Include="Muflone" Version="6.2.0" />
+    <PackageReference Include="Muflone.Saga" Version="6.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Brewup.Modules.Sales.Shared\Brewup.Modules.Sales.Shared.csproj" />
+    <ProjectReference Include="..\Brewup.Modules.Shared\Brewup.Modules.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>..\..\..\..\..\..\Users\acr\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\7.0.0\lib\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>..\..\..\..\..\..\Users\acr\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\lib\net6.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Muflone">
+      <HintPath>..\..\..\..\..\..\Users\acr\.nuget\packages\muflone\6.2.0\lib\net6.0\Muflone.dll</HintPath>
+    </Reference>
+    <Reference Include="Muflone.Saga">
+      <HintPath>..\..\..\..\..\..\Users\acr\.nuget\packages\muflone.saga\6.2.0\lib\net6.0\Muflone.Saga.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
