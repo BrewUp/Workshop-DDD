@@ -10,7 +10,9 @@ namespace Brewup.Modules.Sales.Fitness.Tests
 {
 	public class SalesFitnessTest
 	{
-		private static readonly Architecture Architecture = new ArchLoader().LoadAssemblies(typeof(ISalesOrchestrator).Assembly).Build();
+		private static readonly Architecture Architecture = new ArchLoader()
+			.LoadAssemblies(typeof(ISalesOrchestrator).Assembly)
+			.Build();
 
 		private readonly IObjectProvider<IType> _salesModule =
 			Types().That().ResideInAssembly("Brewup.Modules.Sales").As("Sales Module");
@@ -39,18 +41,18 @@ namespace Brewup.Modules.Sales.Fitness.Tests
 		[Fact]
 		public void TypesShouldBeInCorrectModule()
 		{
-			IArchRule exampleClassesShouldBeInSalesModule =
+			IArchRule classesShouldBeInSalesModule =
 				Classes().That().Are(_salesClasses).Should().Be(_salesModule);
 			IArchRule forbiddenInterfacesShouldBeInForbiddenLayer =
 				Interfaces().That().Are(_forbiddenInterfaces).Should().Be(_forbiddenModule);
 
 			//check if your architecture fulfills your rules
-			exampleClassesShouldBeInSalesModule.Check(Architecture);
+			classesShouldBeInSalesModule.Check(Architecture);
 			forbiddenInterfacesShouldBeInForbiddenLayer.Check(Architecture);
 
 			//you can also combine your rules
 			IArchRule combinedArchRule =
-				exampleClassesShouldBeInSalesModule
+				classesShouldBeInSalesModule
 					.And(forbiddenInterfacesShouldBeInForbiddenLayer);
 
 			combinedArchRule.Check(Architecture);
